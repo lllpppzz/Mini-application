@@ -1,0 +1,98 @@
+{
+  "name": "academic-paper-search",
+  "version": "1.0.0",
+  "description": "Academic Paper Search Application with Template-Based Search",
+  "main": "electron/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "concurrently -k \"npm run vite-only\" \"npm run electron-wait\"",
+    "vite-only": "vite",
+    "electron-wait": "wait-on tcp:5173 && electron .",
+    "build": "vite build",
+    "build:win": "npm run build && electron-builder --win",
+    "build:mac": "npm run build && electron-builder --mac",
+    "build:linux": "npm run build && electron-builder --linux",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "academic",
+    "paper",
+    "search",
+    "electron",
+    "research"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "@mui/material": "^5.14.20",
+    "@mui/icons-material": "^5.14.19",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "axios": "^1.6.2",
+    "date-fns": "^2.30.0",
+    "zustand": "^4.4.7",
+    "file-saver": "^2.0.5",
+    "papaparse": "^5.4.1",
+    "lowdb": "^1.0.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.8",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.academic.papersearch",
+    "productName": "学术论文检索系统",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "backend/**/*",
+      "!backend/python/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "python-env",
+        "to": "python-env",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "backend/python",
+        "to": "python-scripts",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "public/icon.ico"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "public/icon.icns"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "icon": "public/icon.png"
+    }
+  }
+}

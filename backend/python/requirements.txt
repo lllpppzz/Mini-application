@@ -1,0 +1,11 @@
+# Core dependencies for PDF parsing
+PyPDF2>=3.0.0
+pdfplumber>=0.10.0
+
+# Optional: For backend translation (if used)
+deep-translator>=1.11.4
+
+# Optional: For advanced similarity calculation (not used by default)
+# scikit-learn>=1.3.0
+# numpy>=1.24.0
+# jieba>=0.42.1
