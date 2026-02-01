@@ -185,8 +185,6 @@ academic-paper-search/
 
 ## 📄 许可证 (License)
 
-MIT License
-
 ## 📮 联系方式 (Contact)
 
 如有问题或建议，请提交 Issue。
